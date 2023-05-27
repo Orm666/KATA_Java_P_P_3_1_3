@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Delete user</h1>
+
+<form th:action="@{/admin/deleteUser}" method="POST">
+
+    <table th:border="0">
+        <tr th:if="${user.id}">
+            <td>ID</td>
+            <td>:</td>
+            <td th:utext="${user.id}">...</td>
+            <input type="hidden" th:field="${user.id}" id="user.id">
+        </tr>
+        <tr>
+            <td>First name</td>
+            <td>:</td>
+            <td th:utext="${user.firstName}">...</td>
+            <input type="hidden" th:field="${user.firstName}" id="user.firstName">
+        </tr>
+
+        <tr>
+            <td>Last name</td>
+            <td>:</td>
+            <td th:utext="${user.lastName}">...</td>
+            <input type="hidden" th:field="${user.lastName}" id="user.lastName">
+        </tr>
+
+        <tr>
+            <td>Age</td>
+            <td>:</td>
+            <td th:utext="${user.age}">...</td>
+            <input type="hidden" th:field="${user.age}" id="user.age">
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td th:utext="${user.email}">...</td>
+            <input type="hidden" th:field="${user.email}" id="user.email">
+        </tr>
+
+<!--        <tr>-->
+<!--            <td>Password</td>-->
+<!--            <td>:</td>-->
+<!--            <td>-->
+<!--                <input type="hidden" type="text" th:field="${user.password}"/>-->
+<!--            </td>-->
+<!--        </tr>-->
+
+        <tr>
+            <td>Roles</td>
+            <td>:</td>
+            <td>
+                <span th:each="role : ${user.roles}" th:utext="${role.name.replaceFirst('ROLE_', '')} + ' '"></span>
+            </td>
+
+        </tr>
+
+
+    </table>
+    <input type="submit" th:value="'Delete'"/>
+</form>
+
+
+</body>
+</html>
